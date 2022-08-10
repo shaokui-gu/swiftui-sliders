@@ -30,6 +30,7 @@ extension RangeSlider {
                 ),
                 bounds: CGFloat(bounds.lowerBound)...CGFloat(bounds.upperBound),
                 step: CGFloat(step),
+                minSpacing: 0,
                 onEditingChanged: onEditingChanged,
                 dragOffset: .constant(0)
             )
@@ -48,6 +49,7 @@ extension RangeSlider {
                 ),
                 bounds: CGFloat(bounds.lowerBound)...CGFloat(bounds.upperBound),
                 step: CGFloat(step),
+                minSpacing: 0,
                 onEditingChanged: onEditingChanged,
                 dragOffset: .constant(0)
             )

@@ -67,8 +67,14 @@ public struct VerticalRangeSliderStyle<Track: View, LowerThumb: View, UpperThumb
                             )
 
                             if self.options.contains(.forceAdjacentValue) {
-                                let computedUpperBound = max(computedLowerBound, configuration.range.wrappedValue.upperBound)
-                                configuration.range.wrappedValue = computedLowerBound...computedUpperBound
+                                var lower = computedLowerBound
+                                var uper = configuration.range.wrappedValue.upperBound
+                                if lower >= uper {
+                                    uper = min(configuration.bounds.upperBound, lower + configuration.minSpacing)
+                                    lower = uper - configuration.minSpacing
+                                    configuration.range.wrappedValue = lower...uper
+                                }
+                                configuration.range.wrappedValue = lower...uper
                             } else {
                                 let computedLowerBound = min(computedLowerBound, configuration.range.wrappedValue.upperBound)
                                 configuration.range.wrappedValue = computedLowerBound...configuration.range.wrappedValue.upperBound
@@ -79,7 +85,6 @@ public struct VerticalRangeSliderStyle<Track: View, LowerThumb: View, UpperThumb
                             configuration.onEditingChanged(false)
                         }
                 )
-
                 ZStack {
                     self.upperThumb
                         .frame(width: self.upperThumbSize.width, height: self.upperThumbSize.height)
@@ -120,8 +125,13 @@ public struct VerticalRangeSliderStyle<Track: View, LowerThumb: View, UpperThumb
                             )
 
                             if self.options.contains(.forceAdjacentValue) {
-                                let computedLowerBound = min(computedUpperBound, configuration.range.wrappedValue.lowerBound)
-                                configuration.range.wrappedValue = computedLowerBound...computedUpperBound
+                                var lower = configuration.range.wrappedValue.lowerBound
+                                var uper = computedUpperBound
+                                if uper <= lower {
+                                    uper = max(configuration.bounds.lowerBound + configuration.minSpacing, uper)
+                                    lower = uper - configuration.minSpacing
+                                }
+                                configuration.range.wrappedValue = lower...uper
                             } else {
                                 let computedUpperBound = max(computedUpperBound, configuration.range.wrappedValue.lowerBound)
                                 configuration.range.wrappedValue = configuration.range.wrappedValue.lowerBound...computedUpperBound
