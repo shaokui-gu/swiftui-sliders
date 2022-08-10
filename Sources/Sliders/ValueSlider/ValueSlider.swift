@@ -4,7 +4,7 @@ public struct ValueSlider: View {
     @Environment(\.valueSliderStyle) private var style
     @State private var dragOffset: CGFloat?
     
-    private var configuration: ValueSliderStyleConfiguration
+    public let configuration: ValueSliderStyleConfiguration
     
     public var body: some View {
         self.style.makeBody(configuration:
