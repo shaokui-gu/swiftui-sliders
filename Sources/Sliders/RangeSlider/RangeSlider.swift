@@ -4,7 +4,7 @@ public struct RangeSlider: View {
     @Environment(\.rangeSliderStyle) private var style
     @State private var dragOffset: CGFloat?
     
-    public let configuration: RangeSliderStyleConfiguration
+    private var configuration: RangeSliderStyleConfiguration
     
     public var body: some View {
         self.style.makeBody(configuration:

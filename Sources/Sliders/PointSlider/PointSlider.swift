@@ -4,7 +4,7 @@ public struct PointSlider: View {
     @Environment(\.pointSliderStyle) private var style
     @State private var dragOffset: CGPoint? = nil
     
-    public let configuration: PointSliderStyleConfiguration
+    private var configuration: PointSliderStyleConfiguration
     
     public var body: some View {
         self.style.makeBody(configuration:
@@ -14,7 +14,7 @@ public struct PointSlider: View {
 }
 
 extension PointSlider {
-    public init(_ configuration: PointSliderStyleConfiguration) {
+    init(_ configuration: PointSliderStyleConfiguration) {
         self.configuration = configuration
     }
 }
