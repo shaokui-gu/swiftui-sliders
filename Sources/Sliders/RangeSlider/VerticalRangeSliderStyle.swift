@@ -69,7 +69,7 @@ public struct VerticalRangeSliderStyle<Track: View, LowerThumb: View, UpperThumb
                             if self.options.contains(.forceAdjacentValue) {
                                 var lower = computedLowerBound
                                 var uper = configuration.range.wrappedValue.upperBound
-                                if lower >= uper {
+                                if lower + configuration.minSpacing >= uper {
                                     uper = min(configuration.bounds.upperBound, lower + configuration.minSpacing)
                                     lower = uper - configuration.minSpacing
                                     configuration.range.wrappedValue = lower...uper
@@ -127,7 +127,7 @@ public struct VerticalRangeSliderStyle<Track: View, LowerThumb: View, UpperThumb
                             if self.options.contains(.forceAdjacentValue) {
                                 var lower = configuration.range.wrappedValue.lowerBound
                                 var uper = computedUpperBound
-                                if uper <= lower {
+                                if uper - configuration.minSpacing <= lower {
                                     uper = max(configuration.bounds.lowerBound + configuration.minSpacing, uper)
                                     lower = uper - configuration.minSpacing
                                 }
