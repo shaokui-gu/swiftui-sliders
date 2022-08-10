@@ -24,7 +24,7 @@ extension ValueSlider {
         
         self.init(
             ValueSliderStyleConfiguration(
-                value: Binding(get: { CGFloat(value.wrappedValue.clamped(to: bounds)) }, set: { value.wrappedValue = V($0) }),
+                value: Binding(get: { CGFloat(value.wrappedValue.clampedValue(to: bounds)) }, set: { value.wrappedValue = V($0) }),
                 bounds: CGFloat(bounds.lowerBound)...CGFloat(bounds.upperBound),
                 step: CGFloat(step),
                 onEditingChanged: onEditingChanged,
