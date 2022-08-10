@@ -14,7 +14,7 @@ public struct ValueSlider: View {
 }
 
 extension ValueSlider {
-    init(_ configuration: ValueSliderStyleConfiguration) {
+    public init(_ configuration: ValueSliderStyleConfiguration) {
         self.configuration = configuration
     }
 }

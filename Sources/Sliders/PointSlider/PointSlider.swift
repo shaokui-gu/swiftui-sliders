@@ -14,7 +14,7 @@ public struct PointSlider: View {
 }
 
 extension PointSlider {
-    init(_ configuration: PointSliderStyleConfiguration) {
+    public init(_ configuration: PointSliderStyleConfiguration) {
         self.configuration = configuration
     }
 }
